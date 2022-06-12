@@ -2,12 +2,40 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import backgroundAudio from "../src/media/background_music.mp3";
+
+const Sound = () => {
+  const audio = new Audio(backgroundAudio);
+  audio.loop = true;
+
+  return (
+    <div>
+      <button
+        onClick={() => {
+          audio.loop = true;
+          audio.play();
+        }}
+      >
+        Play audio
+      </button>
+      <button
+        onClick={() => {
+          audio.loop = false;
+          audio.pause();
+        }}
+      >
+        Pause audio
+      </button>
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    <Sound />,
     <App />
   </React.StrictMode>
 );
