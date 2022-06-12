@@ -1,0 +1,49 @@
+.default {
+  background: turquoise;
+  color: transparent;
+
+  align-items: center;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.22),
+    rgba(255, 255, 255, 0.25)
+  );
+  border-radius: 50px;
+  display: flex;
+
+  justify-content: center;
+
+  text-indent: -9999px;
+}
+
+.flagged {
+  background: tomato;
+  color: transparent;
+  text-indent: -9999px;
+}
+
+.revealed {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.revealedZero {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lost {
+  background: red;
+}
