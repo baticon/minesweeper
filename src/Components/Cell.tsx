@@ -48,7 +48,7 @@ const Cell: FC<CellProps> = ({
       }
       onContextMenu={() =>
         `${
-          ((details.open ? "" : setFlagged((oldFlagged) => !oldFlagged),
+          (details.open ? "" : setFlagged((oldFlagged) => !oldFlagged),
           setGrid((grid) => [
             ...grid.slice(0, rowInd),
             [
@@ -57,8 +57,7 @@ const Cell: FC<CellProps> = ({
               ...grid[rowInd].slice(colInd + 1),
             ],
             ...grid.slice(rowInd + 1),
-          ])),
-          console.log(grid))
+          ]))
         }`
       }
       style={{
