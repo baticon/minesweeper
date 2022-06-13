@@ -4,12 +4,6 @@ import Cell from "./Cell";
 import { BoardCell } from "../Types/BoardCell";
 
 interface String {
-  /**
-   * Gets a substring beginning at the specified location and having the specified length.
-   * (deprecation removed)
-   * @param from The starting position of the desired substring. The index of the first character in the string is zero.
-   * @param length The number of characters to include in the returned substring.
-   */
   substr(from: number, length?: number): string;
 }
 
@@ -22,7 +16,7 @@ const Board: FC = () => {
   const [lost, setLost] = useState(false);
   const [win, setWin] = useState(false);
   const width = 8;
-  const numMines = 2;
+  const numMines = 5;
 
   useEffect(() => {
     function freshBoard() {
@@ -75,7 +69,6 @@ const Board: FC = () => {
   }
 
   function openHandler(rowInd: number, colInd: number) {
-    console.log(grid);
     openCellHandler(rowInd, colInd);
     if (grid[rowInd][colInd].value === 0) {
       let xRight = colInd + 1;
@@ -268,6 +261,31 @@ const Board: FC = () => {
     });
   }
 
+  function winCondition() {
+    let counterCell = 0;
+    let counterMine = 0;
+    for (let i = 0; i < boardWidth; i++) {
+      for (let j = 0; j < boardWidth; j++) {
+        if (grid[i][j].value === "X" && grid[i][j].open === false) {
+          counterMine = counterMine + 1;
+        }
+        if (
+          grid[i][j].value !== "X" &&
+          grid[i][j].open === true &&
+          grid[i][j].flag === false
+        ) {
+          counterCell = counterCell + 1;
+        }
+        if (
+          counterMine === numMines &&
+          counterCell === boardWidth * boardWidth - numMines
+        ) {
+          setWin(true);
+        }
+      }
+    }
+  }
+
   if (win === true) {
     return <h1>YOU HAVE WON 😊</h1>;
   }
@@ -278,6 +296,8 @@ const Board: FC = () => {
   if (lost === false) {
     keyCounterOne = keyCounterOne + 1;
     keyCounterTwo = keyCounterTwo + 1;
+
+    winCondition();
     return (
       <div key={keyCounterOne}>
         {grid.map((singleRow: Array<any>, rowInd: number) => {

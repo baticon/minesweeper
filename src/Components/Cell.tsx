@@ -32,33 +32,6 @@ const Cell: FC<CellProps> = ({
 }) => {
   const [flagged, setFlagged] = useState(false);
 
-  function changeFlag() {
-    if (details.open === false) {
-      setFlagged((oldFlagged) => !oldFlagged);
-    }
-  }
-
-  function winCondition() {
-    let counterCell = 0;
-    let counterMine = 0;
-    for (let i = 0; i < boardWidth; i++) {
-      for (let j = 0; j < boardWidth; j++) {
-        if (grid[i][j].value === "X" && grid[i][j].open === false) {
-          counterMine = counterMine + 1;
-        }
-        if (grid[i][j].value !== "X" && grid[i][j].open === true) {
-          counterCell = counterCell + 1;
-        }
-        if (
-          counterMine === numMines &&
-          counterCell === width * width - (numMines + 1)
-        ) {
-          setWin(true);
-        }
-      }
-    }
-  }
-
   return (
     <div
       className={`${flagged ? styles.flagged : styles.defaut} ${
@@ -69,18 +42,10 @@ const Cell: FC<CellProps> = ({
           : styles.defaut
       }`}
       onClick={() =>
-        `${
-          (winCondition(),
-          flagged ? "" : openHandler(rowInd, colInd),
-          openHandlerIterator())
-        }`
+        `${(flagged ? "" : openHandler(rowInd, colInd), openHandlerIterator())}`
       }
       onContextMenu={() =>
-        `${
-          (winCondition(),
-          changeFlag(),
-          flagged ? (details.flag = true) : (details.flag = false))
-        }`
+        `${details.open ? "" : setFlagged((oldFlagged) => !oldFlagged)}`
       }
       style={{
         height: 50,
