@@ -57,8 +57,6 @@ const Cell: FC<CellProps> = ({
         }
       }
     }
-    // console.log(`check1 ${counterMine} and ${counterCell}`);
-    // console.log(`check2 ${numMines} and ${width * width - numMines}`);
   }
 
   return (

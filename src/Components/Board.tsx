@@ -14,10 +14,11 @@ interface String {
 }
 
 let coordinateSet = new Set<string>([]);
+let keyCounterOne = 0;
+let keyCounterTwo = 200;
 
 const Board: FC = () => {
   const [grid, setGrid] = useState<BoardCell[][]>([]);
-  // const [grid, setGrid] = useState<any>([]);
   const [lost, setLost] = useState(false);
   const [win, setWin] = useState(false);
   const width = 8;
@@ -49,7 +50,7 @@ const Board: FC = () => {
     ) {
       setLost(true);
     }
-    // WIN CONDITION FUNCTION
+
     if (
       rowInd > -1 &&
       rowInd < boardWidth &&
@@ -270,12 +271,18 @@ const Board: FC = () => {
   if (win === true) {
     return <h1>YOU HAVE WON 😊</h1>;
   }
+  function counter() {
+    keyCounterTwo = keyCounterTwo + 1;
+    return keyCounterTwo;
+  }
   if (lost === false) {
+    keyCounterOne = keyCounterOne + 1;
+    keyCounterTwo = keyCounterTwo + 1;
     return (
-      <div>
+      <div key={keyCounterOne}>
         {grid.map((singleRow: Array<any>, rowInd: number) => {
           return (
-            <div style={{ display: "flex" }}>
+            <div key={counter()} style={{ display: "flex" }}>
               {singleRow.map((singleBlock, colInd) => {
                 return (
                   <div
