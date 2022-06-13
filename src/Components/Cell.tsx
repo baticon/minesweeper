@@ -6,7 +6,7 @@ import { BoardCell } from "../Types/BoardCell";
 interface CellProps {
   details: BoardCell;
   grid: BoardCell[][];
-  setGrid: any;
+  setGrid: React.Dispatch<React.SetStateAction<BoardCell[][]>>;
   boardWidth: number;
   win: boolean;
   setWin: (isWin: boolean) => void;
@@ -36,7 +36,7 @@ const Cell: FC<CellProps> = ({
 
   return (
     <div
-      className={`${flagged ? styles.flagged : styles.defaut} ${
+      className={`${details.flag ? styles.flagged : styles.defaut} ${
         details.open ? styles.revealed : styles.default
       } ${
         details.open === true && details.value === 0
@@ -47,7 +47,19 @@ const Cell: FC<CellProps> = ({
         `${(flagged ? "" : openHandler(rowInd, colInd), openHandlerIterator())}`
       }
       onContextMenu={() =>
-        `${details.open ? "" : setFlagged((oldFlagged) => !oldFlagged)}`
+        `${
+          ((details.open ? "" : setFlagged((oldFlagged) => !oldFlagged),
+          setGrid((grid) => [
+            ...grid.slice(0, rowInd),
+            [
+              ...grid[rowInd].slice(0, colInd),
+              { ...grid[rowInd][colInd], flag: true },
+              ...grid[rowInd].slice(colInd + 1),
+            ],
+            ...grid.slice(rowInd + 1),
+          ])),
+          console.log(grid))
+        }`
       }
       style={{
         height: 50,

@@ -29,7 +29,7 @@ function App() {
             zIndex: "-1",
           }}
         >
-          <source src={backgroundVideo} type="video/mp4"></source>
+          {/* <source src={backgroundVideo} type="video/mp4"></source> */}
         </video>
       </div>
     </div>
