@@ -312,6 +312,7 @@ const Board: FC = () => {
                     <Cell
                       details={singleBlock}
                       grid={grid}
+                      setGrid={setGrid}
                       boardWidth={boardWidth}
                       win={win}
                       setWin={setWin}

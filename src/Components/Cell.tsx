@@ -6,6 +6,7 @@ import { BoardCell } from "../Types/BoardCell";
 interface CellProps {
   details: BoardCell;
   grid: BoardCell[][];
+  setGrid: any;
   boardWidth: number;
   win: boolean;
   setWin: (isWin: boolean) => void;
@@ -20,6 +21,7 @@ interface CellProps {
 const Cell: FC<CellProps> = ({
   details,
   grid,
+  setGrid,
   boardWidth,
   win,
   setWin,
