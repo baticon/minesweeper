@@ -44,11 +44,14 @@ const Cell: FC<CellProps> = ({
           : styles.defaut
       }`}
       onClick={() =>
-        `${(flagged ? "" : openHandler(rowInd, colInd), openHandlerIterator())}`
+        `${
+          (details.flag ? "" : openHandler(rowInd, colInd),
+          openHandlerIterator())
+        }`
       }
       onContextMenu={() =>
         `${
-          (details.open ? "" : setFlagged((oldFlagged) => !oldFlagged),
+          ((details.open ? "" : setFlagged((oldFlagged) => !oldFlagged),
           setGrid((grid) => [
             ...grid.slice(0, rowInd),
             [
@@ -57,7 +60,20 @@ const Cell: FC<CellProps> = ({
               ...grid[rowInd].slice(colInd + 1),
             ],
             ...grid.slice(rowInd + 1),
-          ]))
+          ])),
+          `${
+            details.flag
+              ? setGrid((grid) => [
+                  ...grid.slice(0, rowInd),
+                  [
+                    ...grid[rowInd].slice(0, colInd),
+                    { ...grid[rowInd][colInd], flag: false },
+                    ...grid[rowInd].slice(colInd + 1),
+                  ],
+                  ...grid.slice(rowInd + 1),
+                ])
+              : ""
+          }`)
         }`
       }
       style={{
