@@ -3,6 +3,9 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import backgroundAudio from "../src/media/background_music.mp3";
+import duck from "../src/media/duck.mp3";
+
+const audio2 = new Audio(duck);
 
 const Sound = () => {
   const audio = new Audio(backgroundAudio);

@@ -2,6 +2,9 @@ import React, { FC } from "react";
 import { useState } from "react";
 import styles from "./Cell.module.css";
 import { BoardCell } from "../Types/BoardCell";
+import duck from "../media/duck.mp3";
+
+const sound = new Audio(duck);
 
 interface CellProps {
   details: BoardCell;
@@ -45,8 +48,9 @@ const Cell: FC<CellProps> = ({
       }`}
       onClick={() =>
         `${
+          (sound.play(),
           (details.flag ? "" : openHandler(rowInd, colInd),
-          openHandlerIterator())
+          openHandlerIterator()))
         }`
       }
       onContextMenu={() =>
