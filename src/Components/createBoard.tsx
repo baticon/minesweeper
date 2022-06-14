@@ -47,83 +47,95 @@ export default function CreateBoard(
   }
 
   // Adding numbers
-  for (let dummyRow = 0; dummyRow < row; dummyRow++) {
-    for (let dummyCol = 0; dummyCol < col; dummyCol++) {
-      if (board[dummyRow][dummyCol].value === "X") {
+  for (let iteratorRow = 0; iteratorRow < row; iteratorRow++) {
+    for (let iteratorCol = 0; iteratorCol < col; iteratorCol++) {
+      if (board[iteratorRow][iteratorCol].value === "X") {
         continue;
       }
 
       // Top
-      if (dummyRow > 0 && board[dummyRow - 1][dummyCol].value === "X") {
-        const val = Number(board[dummyRow][dummyCol].value);
-        board[dummyRow][dummyCol].value = val + 1;
+      if (
+        iteratorRow > 0 &&
+        board[iteratorRow - 1][iteratorCol].value === "X"
+      ) {
+        const val = Number(board[iteratorRow][iteratorCol].value);
+        board[iteratorRow][iteratorCol].value = val + 1;
       }
 
       // Top Left
-      // dummyRow and dummyCol to be > 0
+      // iteratorRow and iteratorCol to be > 0
       // if you are on the first square you can go out ob bound
       if (
-        dummyRow > 0 &&
-        dummyCol > 0 &&
-        board[dummyRow - 1][dummyCol - 1].value === "X"
+        iteratorRow > 0 &&
+        iteratorCol > 0 &&
+        board[iteratorRow - 1][iteratorCol - 1].value === "X"
       ) {
-        const val = Number(board[dummyRow][dummyCol].value);
-        board[dummyRow][dummyCol].value = val + 1;
-        // board[dummyRow][dummyCol].value++;
+        const val = Number(board[iteratorRow][iteratorCol].value);
+        board[iteratorRow][iteratorCol].value = val + 1;
+        // board[iteratorRow][iteratorCol].value++;
       }
 
       // Top Right
       if (
-        dummyRow > 0 &&
-        dummyCol < col - 1 &&
-        board[dummyRow - 1][dummyCol + 1].value === "X"
+        iteratorRow > 0 &&
+        iteratorCol < col - 1 &&
+        board[iteratorRow - 1][iteratorCol + 1].value === "X"
       ) {
-        const val = Number(board[dummyRow][dummyCol].value);
-        board[dummyRow][dummyCol].value = val + 1;
-        // board[dummyRow][dummyCol].value++;
+        const val = Number(board[iteratorRow][iteratorCol].value);
+        board[iteratorRow][iteratorCol].value = val + 1;
+        // board[iteratorRow][iteratorCol].value++;
       }
 
       // Bottom
-      if (dummyRow < row - 1 && board[dummyRow + 1][dummyCol].value === "X") {
-        const val = Number(board[dummyRow][dummyCol].value);
-        board[dummyRow][dummyCol].value = val + 1;
-        // board[dummyRow][dummyCol].value++;
+      if (
+        iteratorRow < row - 1 &&
+        board[iteratorRow + 1][iteratorCol].value === "X"
+      ) {
+        const val = Number(board[iteratorRow][iteratorCol].value);
+        board[iteratorRow][iteratorCol].value = val + 1;
+        // board[iteratorRow][iteratorCol].value++;
       }
 
       // Bottom Left
       if (
-        dummyRow < row - 1 &&
-        dummyCol > 0 &&
-        board[dummyRow + 1][dummyCol - 1].value === "X"
+        iteratorRow < row - 1 &&
+        iteratorCol > 0 &&
+        board[iteratorRow + 1][iteratorCol - 1].value === "X"
       ) {
-        const val = Number(board[dummyRow][dummyCol].value);
-        board[dummyRow][dummyCol].value = val + 1;
-        // board[dummyRow][dummyCol].value++;
+        const val = Number(board[iteratorRow][iteratorCol].value);
+        board[iteratorRow][iteratorCol].value = val + 1;
+        // board[iteratorRow][iteratorCol].value++;
       }
 
       // Bottom Right
       if (
-        dummyRow < row - 1 &&
-        dummyCol < col - 1 &&
-        board[dummyRow + 1][dummyCol + 1].value === "X"
+        iteratorRow < row - 1 &&
+        iteratorCol < col - 1 &&
+        board[iteratorRow + 1][iteratorCol + 1].value === "X"
       ) {
-        const val = Number(board[dummyRow][dummyCol].value);
-        board[dummyRow][dummyCol].value = val + 1;
-        // board[dummyRow][dummyCol].value++;
+        const val = Number(board[iteratorRow][iteratorCol].value);
+        board[iteratorRow][iteratorCol].value = val + 1;
+        // board[iteratorRow][iteratorCol].value++;
       }
 
       // Left
-      if (dummyCol > 0 && board[dummyRow][dummyCol - 1].value === "X") {
-        const val = Number(board[dummyRow][dummyCol].value);
-        board[dummyRow][dummyCol].value = val + 1;
-        // board[dummyRow][dummyCol].value++;
+      if (
+        iteratorCol > 0 &&
+        board[iteratorRow][iteratorCol - 1].value === "X"
+      ) {
+        const val = Number(board[iteratorRow][iteratorCol].value);
+        board[iteratorRow][iteratorCol].value = val + 1;
+        // board[iteratorRow][iteratorCol].value++;
       }
 
       // Right
-      if (dummyCol < col - 1 && board[dummyRow][dummyCol + 1].value === "X") {
-        const val = Number(board[dummyRow][dummyCol].value);
-        board[dummyRow][dummyCol].value = val + 1;
-        // board[dummyRow][dummyCol].value++;
+      if (
+        iteratorCol < col - 1 &&
+        board[iteratorRow][iteratorCol + 1].value === "X"
+      ) {
+        const val = Number(board[iteratorRow][iteratorCol].value);
+        board[iteratorRow][iteratorCol].value = val + 1;
+        // board[iteratorRow][iteratorCol].value++;
       }
     }
   }
